@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body >
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container d-flex justify-content-between">
+      <a class="navbar-brand" href={{url_for('catalog_all')}}>Catalog App</a>
+    </div>
+  </nav>
+  <main role="main" class="container" style="padding-top:3rem;">
+    <form action="{{url_for('newCatalogItem')}}" method = 'POST'>
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type='text' class="form-control" id="name"  size='30' name='name' placeholder='Enter product name'>
+      </div>
+      <div class="form-group">
+        <label for="description">Product Description</label>
+        <textarea type='text' class="form-control" id="description"  size='30' name='description'  rows="3" placeholder='Enter product description.'></textarea>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select name='category'  class="form-control" id="category">
+          {% for i in categories %}
+          <option value="{{i.id}}">{{i.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <input type='submit' class="btn btn-primary" value='OK'>
+      <a href = {{url_for('catalog_all') }}  class="btn btn-secondary">Cancel</a>
+    </form>
+  </main>
+</body>
+</html>
