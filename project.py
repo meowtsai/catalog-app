@@ -31,7 +31,7 @@ DBSession = sessionmaker(bind=engine)
 session = scoped_session(DBSession)
 
 CLIENT_ID = json.loads(
-    open('/var/www/html/catalog-app/client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/html/catalog-app/client_secret.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Catalop Application"
 
 app.secret_key = 'super_secret_key'
